@@ -1,15 +1,15 @@
 import styled from 'styled-components';
-import { darken, lighten } from 'polished';
+import { lighten } from 'polished';
 
 export const palette = {
   primDark:    '#303F9F',
   prim:        '#3F51B5',
   primLight:   '#C5CAE9',
   primText:    '#FFFFFF',
-  accent:      '#00BCD4',
+  accent:      '#00C8B5',
   text:        '#212121',
   secText:     '#757575',
-  divider:     '#BDBDBD'
+  divider:     '#BDBDBD',
 }
 
 export const Aside = styled.aside`
@@ -57,4 +57,73 @@ export const SideNav = styled.nav`
   flex-direction: column;
   width: 100%;
   padding: 20px 0 0;
+`;
+
+export const Main = styled.main`
+  height: 100vh;
+  margin-left: 100px;
+`;
+
+export const InputText = styled.input`
+  display: ${({ path }) => path === '/login' ? 'none' : 'block'};
+  width: 80%;
+  padding: 10px;
+  margin: 0 0 20px;
+  border: none;
+  border-bottom: 2px solid ${palette.divider};
+  color: ${palette.secText};
+  font-size: 18px;
+  font-weight: lighter;
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid ${palette.accent};
+  }
+  &::-webkit-input-placeholder {
+    color: ${palette.divider};
+  }
+  &::-moz-placeholder {
+    color: ${palette.divider};
+  }
+  &:-ms-input-placeholder {
+    color: ${palette.divider};
+  }
+  &:-moz-placeholder {
+    color: ${palette.divider};
+  }
+`;
+
+export const InputSubmit = styled.input.attrs({
+  type: 'submit',
+  value: 'Log In'
+})`
+  display: block;
+  width: 170px;
+  background-color: ${palette.accent};
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: lighter;
+  box-shadow: box-shadow: 0 14px 45px rgba(0, 0, 0, 0.2), 0 10px 18px rgba(0, 0, 0, 0.2);
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: ${lighten(0.05, palette.accent)};
+  }
+`;
+
+export const LoginTitle = styled.h1`
+  width: 85%;
+  margin: 0 auto;
+  color: ${palette.text};
+  font-size: 30px;
+  font-weight: normal;
+`;
+
+export const Banner = styled.section`
+  background-color: ${palette.prim};
+  border-radius: 50%;
+  transform: scale(2) translateX(-30%);
 `;
