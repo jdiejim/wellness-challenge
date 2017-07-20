@@ -74,7 +74,7 @@ class LoginForm extends Component {
           />
         </section>
         <section className="login-submit-wrapper">
-          <InputSubmit id="submit-btn" />
+          <InputSubmit id="submit-btn" path={pathname} />
           {/* <p>or create an account</p> */}
         </section>
       </form>

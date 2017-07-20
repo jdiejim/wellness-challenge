@@ -94,7 +94,7 @@ export const InputText = styled.input`
 
 export const InputSubmit = styled.input.attrs({
   type: 'submit',
-  value: 'Log In'
+  value: ({ path }) => path === '/login' ? 'Log In' : 'Sign Up',
 })`
   display: block;
   width: 170px;
