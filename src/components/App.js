@@ -14,6 +14,7 @@ class App extends Component {
       <main className="App">
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/login" component={WelcomePageContainer} />
+        <Route path="/signup" component={WelcomePageContainer} />
       </main>
     );
   }

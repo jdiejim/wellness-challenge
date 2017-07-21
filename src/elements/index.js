@@ -123,12 +123,15 @@ export const LoginTitle = styled.h1`
 `;
 
 const bannerAnim = keyframes`
-  to { transform: scale(10) translateX(-30%); }
+  to { transform: scale(10); }
 `
 
 export const Banner = styled.section`
+  position: relative;
+  left: -20%;
   background-color: ${palette.prim};
   border-radius: 50%;
-  transform: scale(${({ size }) => size}) translateX(-30%);
-  animation: ${({ anim }) => anim ? `${bannerAnim} 1s cubic-bezier(.75,-0.32,.83,.67)` : null};
+  width: 100%;
+  transform: scale(1.8);
+  animation: ${({ anim }) => anim ? `${bannerAnim} 0.5s cubic-bezier(.75,-0.32,.83,.67)` : null};
 `;
