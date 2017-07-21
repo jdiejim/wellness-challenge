@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { InputText, InputSubmit, LoginTitle } from '../elements';
-import './styles/LoginForm.css';
+import './styles/LogInForm.css';
 
-class LoginForm extends Component {
+class LogInForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -15,6 +15,9 @@ class LoginForm extends Component {
 
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
+    this.handleLogIn = this.handleLogIn.bind(this);
+    this.clearState = this.clearState.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
   }
 
   handleOnChange(e) {
@@ -25,18 +28,43 @@ class LoginForm extends Component {
 
   handleOnSubmit(e) {
     e.preventDefault();
+    const { location: { pathname } } = this.props;
 
+    if (pathname === '/signup') {
+      this.handleSignUp();
+    } else {
+      this.handleLogIn();
+    }
+
+    this.clearState();
+  }
+
+  clearState() {
     this.setState({
       first_name: '',
       last_name: '',
       email: '',
       avatar: '',
       password: ''
-    })
+    });
+  }
+
+  handleLogIn() {
+    const { email, password } = this.state;
+    const { logIn } = this.props;
+
+    logIn({ email, password });
+  }
+
+  handleSignUp() {
+    const { first_name, last_name, email, password } = this.state;
+    const { signUp } = this.props;
+
+    signUp({ first_name, last_name, email, password });
   }
 
   render() {
-    const { first_name, last_name, email, password, avatar } = this.state;
+    const { first_name, last_name, email, password } = this.state;
     const { location: { pathname } } = this.props;
     const title = pathname === '/login' ? 'Log In' : 'Sign Up';
 
@@ -82,4 +110,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm
+export default LogInForm

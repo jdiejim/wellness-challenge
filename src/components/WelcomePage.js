@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import LoginForm from './LoginForm';
+import LogInFormContainer from '../containers/LogInFormContainer';
 import { Banner } from '../elements';
 import './styles/WelcomePage.css';
 
-const WelcomePage = () => {
+const WelcomePage = (props) => {
   return (
     <section className="welcome-container">
       <nav className="welcome-nav">
@@ -13,8 +13,8 @@ const WelcomePage = () => {
       <main className="welcome-main">
         <Banner />
         <section className="welcome-login-wrapper">
-          <Route path="/login" component={LoginForm} />
-          <Route path="/signup" component={LoginForm} />
+          <Route path="/login" component={LogInFormContainer} />
+          <Route path="/signup" component={LogInFormContainer} />
         </section>
       </main>
     </section>
