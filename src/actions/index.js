@@ -1,11 +1,10 @@
-import { LOG_IN, SIGN_UP, USER_IS_LOADING, USER_LOGIN_FAIL } from '../utils/constants';
+import { LOG_IN, SIGN_UP, USER_IS_LOADING, USER_LOGIN_FAIL, USER_LOGIN_SUCCESS } from '../utils/constants';
 
 // User Actions
 export const logIn = (user) => ({ type: LOG_IN, user });
-
 export const userIsLoading = (bool) => ({ type: USER_IS_LOADING, userIsLoading: bool });
-
 export const userLogInFail = (bool) => ({ type: USER_LOGIN_FAIL, userFail: bool });
+export const userLogInSuccess = (bool) => ({ type: USER_LOGIN_SUCCESS, userSuccess: bool });
 
 export const logInUser = (body) => {
   return dispatch => {
@@ -19,8 +18,14 @@ export const logInUser = (body) => {
       dispatch(userIsLoading(false));
       return res.json();
     })
-    .then(({ user }) => dispatch(logIn(user)))
-    .catch(err => dispatch(userLogInFail(true)));
+    .then(({ user }) => {
+      dispatch(userLogInSuccess(true));
+      dispatch(logIn(user));
+    })
+    .catch(err => {
+      dispatch(userLogInFail(true));
+      dispatch(userLogInSuccess(false));
+    });
   }
 }
 
@@ -38,7 +43,13 @@ export const signUpUser = (body) => {
       dispatch(userIsLoading(false));
       return res.json();
     })
-    .then(({ user }) => dispatch(signUp(user)))
-    .catch(err => dispatch(userLogInFail(true)));
+    .then(({ user }) => {
+      dispatch(userLogInSuccess(true));
+      dispatch(signUp(user));
+    })
+    .catch(err => {
+      dispatch(userLogInFail(true));
+      dispatch(userLogInSuccess(false));
+    });
   }
 }

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { lighten } from 'polished';
 
 export const palette = {
@@ -122,8 +122,13 @@ export const LoginTitle = styled.h1`
   font-weight: normal;
 `;
 
+const bannerAnim = keyframes`
+  to { transform: scale(10) translateX(-30%); }
+`
+
 export const Banner = styled.section`
   background-color: ${palette.prim};
   border-radius: 50%;
-  transform: scale(2) translateX(-30%);
+  transform: scale(${({ size }) => size}) translateX(-30%);
+  animation: ${({ anim }) => anim ? `${bannerAnim} 1s cubic-bezier(.75,-0.32,.83,.67)` : null};
 `;

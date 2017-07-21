@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
 import './styles/App.css';
 
-import WelcomePage from './WelcomePage';
+import WelcomePageContainer from '../containers/WelcomePageContainer';
 import SideBar from './SideBar';
-import { Main } from '../elements';
+import Dashboard from './Dashboard';
 import { Route } from 'react-router-dom';
 
 class App extends Component {
   render() {
+    const { history, user } = this.props;
 
-    if (true) {
-      return <WelcomePage />
-    }
     return (
       <main className="App">
-        <SideBar />
-        <Main>
-
-        </Main>
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/login" component={WelcomePageContainer} />
       </main>
     );
   }
